@@ -58,7 +58,7 @@ button {
   padding: 16px 50px;
   background: #ff5945;
   color: #fff;
-  font-size: pointer;
+  cursor: pointer;
   border-radius: 40px;
 }
 
@@ -82,4 +82,30 @@ ul li::before {
   background-position: center;
   top: 12px;
   left: 8px;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  background-image: url(images/checked.png);
+}
+
+ul li span {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #555;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+ul li span:hover {
+  background: #edeef0;
 }
