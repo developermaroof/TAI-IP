@@ -6,20 +6,23 @@
     <title>ToDo List</title>
     <!-- Css Link -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
-      <div class="todo-header">
+      <div class="todoList">
         <h2>ToDo List <img src="images/icon.png" alt="icon" /></h2>
         <div class="row">
           <input type="text" id="input-box" placeholder="Add your text" />
           <button onclick="addTask()">Add</button>
         </div>
-        <ul id="list-container">
-          <!-- <li class="checked">Task 1</li>
-          <li>Task 1</li>
-          <li>Task 1</li> -->
-        </ul>
+        <ul id="list-container"></ul>
       </div>
     </div>
     <script src="script.js"></script>
