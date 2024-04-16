@@ -38,7 +38,121 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  transform: scale(1.03) perspective(200px);
 }
 
 .img_section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #5c6bc0 10%, #0d47a1 100%);
+  opacity: 0.5;
+  z-index: -1;
+  border-radius: 25px;
+}
+
+.default_info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.default_info img {
+  width: 80%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.default_info h2 {
+  font-size: 3rem;
+}
+
+.default_info h3 {
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+
+.weather_temp {
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+/* content section */
+
+.content_section {
+  padding: 1.5rem;
+}
+
+.content_section form {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.content_section form input {
+  width: 84%;
+  outline: none;
+  background: transparent;
+  border: 1px solid #37474f;
+  border-radius: 5px;
+  padding: 0.7rem 1rem;
+  font-family: inherit;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.content_section form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1rem 0.7rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  outline: none;
+  border: none;
+  background: #5c6bc0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.day_info .content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+}
+
+.day_info .content .title {
+  font-weight: 600;
+}
+
+.list_content ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  margin: 3rem 0rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.list_content ul li {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in;
+}
+
+.list_content ul li:hover {
+  transform: scale(1.1);
+  background-color: #fff;
+  color: #232931;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.list_content ul li img {
+  width: 50%;
+  object-fit: cover;
 }
