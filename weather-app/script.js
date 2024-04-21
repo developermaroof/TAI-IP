@@ -25,7 +25,7 @@ const dayName = days[day.getDay()];
 dayEL.textContent = dayName;
 
 // Display the date
-let month = day.toLocaleString("default", { month: "long" }); // Changed "Long" to "long"
+let month = day.toLocaleString("default", { month: "long" });
 let date = day.getDate();
 let year = day.getFullYear();
 dateEL.textContent = date + " " + month + " " + year;
@@ -41,7 +41,7 @@ btnEL.addEventListener("click", (e) => {
 
     findLocation(Search);
   } else {
-    console.log("Please Enter City or Country Name"); // Log a message
+    console.log("Please Enter City or Country Name");
   }
 });
 
@@ -70,7 +70,7 @@ async function findLocation(name) {
         iconsContainer.insertAdjacentHTML("afterbegin", ImageContent);
         iconsContainer.classList.add("fadeIn");
         dayInfoEL.insertAdjacentHTML("afterbegin", rightSide);
-      }, 1500);
+      }, 1000);
     } else {
       const message = `<h2 class="weather_temp">${result.cod}</h2>
       <h3 class="cloudtxt">${result.message}</h3>`;
@@ -126,7 +126,7 @@ async function displayForeCast(lat, long) {
   console.log(daysForecast);
   daysForecast.forEach((content, indx) => {
     if (indx <= 3) {
-      listContentEL.insertAdjacentHTML("afterbegin", foreCast(content));
+      listContentEL.insertAdjacentHTML("beforeend", foreCast(content));
     }
   });
 }
