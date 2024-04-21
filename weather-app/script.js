@@ -7,6 +7,7 @@ const inputEL = document.querySelector(".input_field");
 
 const iconsContainer = document.querySelector(".icons");
 const dayInfoEL = document.querySelector(".day_info");
+const listContentEL = document.querySelector(".list_content ul");
 
 const days = [
   "Sunday",
@@ -47,6 +48,8 @@ btnEL.addEventListener("click", (e) => {
 async function findLocation(name) {
   iconsContainer.innerHTML = "";
   dayInfoEL.innerHTML = "";
+  listContentEL.innerHTML = "";
+
   try {
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API}`;
     const data = await fetch(API_URL);
@@ -60,8 +63,14 @@ async function findLocation(name) {
       // display image content
       const rightSide = rightSideContent(result);
 
-      iconsContainer.insertAdjacentHTML("afterbegin", ImageContent);
-      dayInfoEL.insertAdjacentHTML("afterbegin", rightSide);
+      //  forecast function
+      displayForeCast(result.coord.lat, result.coord.lon);
+
+      setTimeout(() => {
+        iconsContainer.insertAdjacentHTML("afterbegin", ImageContent);
+        iconsContainer.classList.add("fadeIn");
+        dayInfoEL.insertAdjacentHTML("afterbegin", rightSide);
+      }, 1500);
     } else {
       const message = `<h2 class="weather_temp">${result.cod}</h2>
       <h3 class="cloudtxt">${result.message}</h3>`;
@@ -99,4 +108,42 @@ function rightSideContent(result) {
 <p class="title">WIND SPEED</p>
 <span class="value">${result.wind.speed} Km/h</span>
 </div>`;
+}
+
+async function displayForeCast(lat, long) {
+  const ForeCast_API = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${API}`;
+  const data = await fetch(ForeCast_API);
+  const result = await data.json();
+
+  // filter the forecast
+  const uniqueForeCastDays = [];
+  const daysForecast = result.list.filter((forecast) => {
+    const forecastDate = new Date(forecast.dt_txt).getDate();
+    if (!uniqueForeCastDays.includes(forecastDate)) {
+      return uniqueForeCastDays.push(forecastDate);
+    }
+  });
+  console.log(daysForecast);
+  daysForecast.forEach((content, indx) => {
+    if (indx <= 3) {
+      listContentEL.insertAdjacentHTML("afterbegin", foreCast(content));
+    }
+  });
+}
+
+// forecast html element data
+function foreCast(frContent) {
+  const day = new Date(frContent.dt_txt);
+  const dayName = days[day.getDay()];
+  const splitDay = dayName.split("", 3);
+  const joinDay = splitDay.join("");
+
+  return `<li>
+  <img
+    src="https://openweathermap.org/img/wn/${frContent.weather[0].icon}@2x.png"
+    alt=""
+  />
+  <span>${joinDay}</span>
+  <span class="day_temp">${Math.round(frContent.main.temp - 275.15)}°C</span>
+</li>`;
 }
