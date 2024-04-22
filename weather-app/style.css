@@ -106,12 +106,12 @@ body {
   right: 0;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding: 1rem 0.7rem;
+  padding: 0.86rem 0.7rem;
   font-family: inherit;
   font-size: 0.8rem;
   outline: none;
   border: none;
-  background: #5c6bc0;
+  background: #3d3943;
   color: #fff;
   cursor: pointer;
 }
